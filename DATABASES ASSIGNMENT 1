@@ -1,0 +1,44 @@
+1.The code writes a series of text to a file named example_output.txt. Example_output.txt will exist and it will contain only the first two lines in the code. The file was opened using the with statement, it is meant to close automatically. Os..fsync() was used to make sure previous data was written to disk. Os._exit(1) terminates the process immediately, proving Python’s normal cleanup and leaving the files potentially open. By knowing the file is correct after the failure is by verifying the code and check if it exists. 
+
+
+2.The experimental setup in this code is running two separate python code at the same time and both of them are opening the same file and writing one line at a time. The setup is designed to observe how two independent processes behave when they write the same file concurrently. As the usage increases the ordering becomes chaotic, fairness disappears, flush timing becomes unreliable, disk I/O becomes a bottleneck, and network filesystems behave unpredictably. At low load, each f.flush() forces a clean atomic write as usage increases. The two independent programs that is writing to the same file and this file based communication approach is straightforward. F.write(“some short line\n”) is followed by f.flush and it will be written to disk as one indivisible operation.  The time.sleep(0.1) assumes the operating system scheduler will switch between processes during sleep, each writer will get a chance to write, and the interleaving will be visible. The system assumes that only a few processes will write to the file, slowly, and not very often. 
+
+
+
+3.The experimental setup is the string containing a name and age, separated by comma and space. Parse_v1 function cleans the input string and transforms it into a structured data. The split command added quotes around the comma so python treats it as a delimiter string. Name is the added quotes to the keys, otherwise python treats name as a variable instead of a string literal. We need to use line.strip().split(‘,’) if there is a space after comma. The design fails future developers by organizing a quick, hard coded solution over robustness, maintainability, and scalability. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.The failure that is most surprising to me is the reliability failure that tells us the filename. It is calling a function by expecting a list within a dictionary is an example. This code runs without crashing. The external factors like network and hardware problems can terminate python’s process ahead of time, causing incomplete execution and potential python corruption. In reliability engineering Python is often used as the data analysis tool using libraries like pandas and the reliability library to model and predict failure rates of physical systems and components. The reliability help us to fit probability distributions to failure data to understand patterns and future failures. Reliability refers to a data being analyzed and not just the code itself. This failure happens when a design works under clear assumptions. The program produces different results depending on the timing. As the usage increases the system hits a reliability failure. The system seems to work correctly when testing and it can fail unexpectedly in production when scaling. It provides information and not true understanding of the complex changing environment. 
